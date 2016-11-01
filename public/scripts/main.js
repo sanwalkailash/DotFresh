@@ -7,8 +7,13 @@ require.config({
         'jquery' : 'jquery/dist/jquery.min',	
 		'angularLocalStorage' : 'angular-local-storage/dist/angular-local-storage.min',		
         'bootstrap' : 'bootstrap/dist/js/bootstrap.min',
-        'homeCtrl':'../app/homeCtrl'
-        
+        'homeCtrl':'../app/homeCtrl',
+        'profileCtrl':'../app/profileCtrl',
+        'loginCtrl':'../app/loginCtrl',
+        'FactoryServices':'../app/services/FactoryServices',
+        'Util':'../app/services/Util',
+        'ngTouch':'ngTouch/ngTouch'
+
     },
     shim: {
         
@@ -23,12 +28,16 @@ require.config({
             deps: ['angular'],
             exports : 'angularLocalStorage'
         },
+		'ngTouch' :{
+            deps: ['angular'],
+            exports : 'ngTouch'
+        },
        
     }
 });
 
 
-require(['require','angular','angularRoute','angularLocalStorage','app'], function () {
+require(['require','angular','angularRoute','angularLocalStorage','ngTouch','app',], function () {
     angular.element(document).ready(function() {
         angular.bootstrap(document, ['mainApp']);
     });

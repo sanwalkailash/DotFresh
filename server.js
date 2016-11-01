@@ -12,12 +12,33 @@ var vhost = 'nodejsapp.local';
 var port     = process.env.PORT || 8082;
 var ip     = process.env.IP || "localhost";
 var environment = process.env.ENV|| 'development';
-console.log(environment)
-var port = 8085;
+console.log("Application Environment :::",environment)
+//var port = 8085;
+
+
+var serverInfo = {};
+serverInfo.environment = environment;
+serverInfo.apiHost = "localhost"; //"54.225.122.8";
+
+if(environment === "production") {
+    serverInfo.selfPort = 80;
+    serverInfo.backend_port = 7700;
+
+} else if(environment === "staging") {
+    serverInfo.selfPort = 8085;
+    serverInfo.backend_port = 6600;
+
+} else {
+    serverInfo.selfPort = 8080;
+    serverInfo.backend_port = 6600;
+
+}
+
+
 var app = express();
 app.configure(function() {
     // set up our express application
-    app.set('port', port);
+    app.set('port', serverInfo.selfPort);
     app.use(express.logger('dev')); // log every request to the console
     app.use(express.cookieParser()); // read cookies (needed for auth)
     // app.use(express.bodyParser()); // get information from html forms
@@ -35,7 +56,7 @@ app.configure(function() {
 
 //var connection = require('./config/database')(mongoose);
 //var models = require('./models/models')(connection);
-require('./app/routes.js')(app); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app,serverInfo); // load our routes and pass in our app and fully configured passport
 
 // development only
 if (app.get('env') === 'development') {

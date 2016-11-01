@@ -3,7 +3,12 @@ define([
     'angular',
 	'angularLocalStorage',
     'angularRoute',
-    'homeCtrl'
+    'homeCtrl',
+    'profileCtrl',
+    'loginCtrl',
+    'FactoryServices',
+    'Util',
+    'ngTouch'
 
     
 
@@ -13,7 +18,12 @@ define([
     var mainApp =  angular.module('mainApp', [
         'ngRoute',
 		'LocalStorageModule',
-        'homeCtrl'
+        'homeCtrl',
+        'profileCtrl',
+        'loginCtrl',
+        'FactoryServices',
+        'Util',
+        'ngTouch'
 
 		
     ]);
@@ -27,12 +37,22 @@ define([
         function($routeProvider) {
             $routeProvider.
             when('/home', {
-                templateUrl: 'partials/home.html',
+                templateUrl: 'partials/auth/home.html',
                 controller: 'homeCtrl',
                 access: { requiredLogin: false }
             }).
+            when('/profile', {
+                templateUrl: 'partials/auth/profile.html',
+                controller: 'profileCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/login', {
+                templateUrl: 'partials/login.html',
+                controller: 'loginCtrl',
+                access: { requiredLogin: false }
+            }).
                 otherwise({
-                    redirectTo: '/home'
+                    redirectTo: '/login'
                 });
         }
 
@@ -43,8 +63,8 @@ define([
 
     mainApp.run(['$rootScope','$location',function($rootScope, $location) {
          $rootScope.app = {
-                name: 'Demo',
-                description: 'Powered by demo',
+                name: 'DotFresh',
+                description: 'Powered by DotFresh',
                 year: ((new Date()).getFullYear()),
               };
     }]);
