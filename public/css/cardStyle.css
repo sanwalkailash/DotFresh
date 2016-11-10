@@ -1,4 +1,4 @@
-/* Tablet and bigger */
+/*!* Tablet and bigger *!
 @media ( min-width: 768px ) {
     .grid-divider {
         position: relative;
@@ -17,4 +17,30 @@
     .col-padding {
         padding: 0 15px;
     }
+}*/
+
+/* latin */
+@font-face {
+    font-family: 'Actor';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Actor Regular'), local('Actor-Regular'), url(http://fonts.gstatic.com/s/actor/v6/OxqeYhb8dn7VMNU4gi8OwA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+body{
+    margin: 0;
+    padding-bottom: 6rem;
+    background-color: powderblue ;
+    min-height: 100%;
+}
+.row{
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-top: 200px;
+}
+h1 {
+    color: blue ;
+}
+p {
+    color: red ;
 }
