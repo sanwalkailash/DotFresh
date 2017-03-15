@@ -1,38 +1,40 @@
 define(['angular'],function(angular){
     'use strict';
-    var newModule = angular.module('homeCtrl', []);
-    newModule.controller('homeCtrl', ['$scope', '$location','$log','FactoryServices','Util',
-    function ($scope, $location,$log,FactoryServices,Util) {
-        console.log("in home");
+    var homeCtrl = angular.module('homeCtrl', []);
+    homeCtrl.controller('homeCtrl', ['$scope','$location',
+        function ($scope,$location) {
+            $scope.p=1;
 
-        $scope.homeJSON = {
-            "userList":""
-        }
-        
-        $scope.showProfile = function () {
-            $location.path('/profile');
-        }
-
-        var listSuccess = function listUsersSuccess(data, status, headers, config) {
-            if(Util.isVoid(data)) {
-                $log.debug("ERROR --- NULL DATA RECEIVED FROM SERVER.")
-            } else {
-                $scope.homeJSON.userList = data.data;
-                for(var i=0;i<$scope.homeJSON.userList.length ;i++) {
-                    $scope.homeJSON.userList[i].stars = ""; // defining stars key
-                    for(var j=0;j<$scope.homeJSON.userList[i].heathRating;j++) {
-                        $scope.homeJSON.userList[i].stars += "☆";
-                    }
+            $scope.next=function(){
+                $scope.p=$scope.p+1;
+            };
+            $scope.prev=function(){
+                $scope.p=$scope.p-1;
+            };
+            $scope.iconsTable=2;
+            $scope.action=1;
+            $scope.nextIcons=function(){
+                $scope.action=1;
+                if($scope.iconsTable!==3){
+                    $scope.iconsTable=$scope.iconsTable+1;
                 }
-
+                else {
+                    $scope.iconsTable=1;
+                }
             }
+            $scope.prevIcons=function(){
+                $scope.action=0;
+                if($scope.iconsTable!==1){
+                    $scope.iconsTable=$scope.iconsTable-1;
+                }
+                else {
+                    $scope.iconsTable=3;
+                }
+            }
+
         }
-        var listFailure = function listUsersSuccess(data, status, headers, config) {
-            $log.debug("ERROR -- UNABLE TO FETCH DATA FROM SERVER",data);
-        }
-        FactoryServices.listUsers("user123",listSuccess,listFailure);
 
 
-    }
     ]);
+
 });

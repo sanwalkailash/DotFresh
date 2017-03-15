@@ -3,14 +3,7 @@ define([
     'angular',
 	'angularLocalStorage',
     'angularRoute',
-    'homeCtrl',
-    'profileCtrl',
-    'loginCtrl',
-    'FactoryServices',
-    'Util',
-    'ngTouch'
-
-    
+    'homeCtrl'
 
 ], function (angular) {
     'use strict';
@@ -18,14 +11,7 @@ define([
     var mainApp =  angular.module('mainApp', [
         'ngRoute',
 		'LocalStorageModule',
-        'homeCtrl',
-        'profileCtrl',
-        'loginCtrl',
-        'FactoryServices',
-        'Util',
-        'ngTouch'
-
-		
+        'homeCtrl'
     ]);
 
     
@@ -37,22 +23,12 @@ define([
         function($routeProvider) {
             $routeProvider.
             when('/home', {
-                templateUrl: 'partials/auth/home.html',
+                templateUrl: 'partials/home.html',
                 controller: 'homeCtrl',
                 access: { requiredLogin: false }
             }).
-            when('/profile', {
-                templateUrl: 'partials/auth/profile.html',
-                controller: 'profileCtrl',
-                access: { requiredLogin: false }
-            }).
-            when('/login', {
-                templateUrl: 'partials/login.html',
-                controller: 'loginCtrl',
-                access: { requiredLogin: false }
-            }).
                 otherwise({
-                    redirectTo: '/login'
+                    redirectTo: '/home'
                 });
         }
 

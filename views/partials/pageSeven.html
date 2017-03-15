@@ -1,0 +1,478 @@
+<style>
+    body
+    {
+        margin:0;
+        padding:0;
+    }
+    .mainDiv{
+        width:100%;
+        height:100%;
+        background-color: white;
+    }
+    .signUpDiv{
+        padding-top: 28px;
+        width:1000px;
+        border: ;
+        height:100%
+    }
+    .buttonCheckOut {
+        background-color: #50D2C2; /* Green */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        width: 300px;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 0px;
+        padding: 8px 14px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .buttonBack {
+        background-color: darkgrey; /* Green */
+        border: none;
+        color: white;
+        margin-right: 10px;
+        text-align: center;
+        text-decoration: none;
+        width: 150px;
+        display: inline-block;
+        font-size: 16px;
+
+        padding: 8px 14px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: absolute;
+        left: -9999px;
+    }
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+        position: relative;
+        padding-left: 25px;
+        padding-top: 3px;
+        cursor: pointer;
+    }
+    /* checkbox aspect */
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+        content: '';
+        position: absolute;
+        left:0; top: 2px;
+        width: 17px; height: 17px;
+        border: 1px solid #aaa;
+        background: #f8f8f8;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+    }
+    /* checked mark aspect */
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+        content:url("images/logincheck.png");
+        position: absolute;
+        top: -4px; left: 2px;
+        font-size: 18px;
+        line-height: 0.8;
+        color: #50D2C2 !important;
+        transition: all .2s;
+    }
+    .login [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+        content:url("images/logincheck.png");
+        position: absolute;
+        top: -4px; left: 2px;
+        font-size: 18px;
+        line-height: 0.8;
+        color: #50D2C2 !important;
+        transition: all .2s;
+    }
+    /* checked mark aspect changes */
+    [type="checkbox"]:not(:checked) + label:after {
+        opacity: 0;
+        transform: scale(0);
+    }
+    [type="checkbox"]:checked + label:after {
+        opacity: 1;
+        transform: scale(1);
+    }
+    body { padding: 2em; }
+
+
+    /* Shared */
+    .loginBtn {
+        box-sizing: border-box;
+        position: relative;
+        /* width: 13em;  - apply for fixed size */
+        margin: 0.2em;
+        padding: 0 48px 0 15px;
+        border: none;
+        text-align: center;
+        line-height: 34px;
+        width: 330px;
+        height: 50px;
+        white-space: nowrap;
+        border-radius: 0.2em;
+        font-size: 16px;
+        color: #FFF;
+    }
+    .loginBtn:after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        width: 50px;
+        height: 100%;
+    }
+    .loginBtn:focus {
+        outline: none;
+    }
+    .loginBtn:active {
+        box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+    }
+
+
+    /* Facebook */
+    .loginBtn--facebook {
+        background-color: #4C69BA;
+        background-image: linear-gradient(#4C69BA, #3B55A0);
+        text-shadow: 0 -1px 0 #354C8C;
+    }
+    .loginBtn--facebook:after {
+        border-left: #364e92 1px solid;
+
+        background: url('images/icon_facebook.png') 6px 6px no-repeat;
+        background-position: center;
+    }
+    .loginBtn--facebook:hover,
+    .loginBtn--facebook:focus {
+        background-color: #5B7BD5;
+        background-image: linear-gradient(#5B7BD5, #4864B1);
+    }
+
+
+    .loginBtn--google {
+        background: #DD4B39;
+    }
+    .loginBtn--google:after {
+        border-left: #BB3F30 1px solid;
+        background: url('images/icon_google.png') 6px 6px no-repeat;
+        background-position: center;
+    }
+    .loginBtn--google:hover,
+    .loginBtn--google:focus {
+        background: #E74B37;
+    }
+    .loginBtn--tweet {
+        background: #55acee;
+    }
+    .loginBtn--tweet:after {
+        border-left: #4864B1 1px solid;
+        background: url('images/icon_twitter.png') 6px 6px no-repeat;
+        background-position: center;
+    }
+    .loginBtn--tweet:hover,
+    .loginBtn--tweet:focus {
+        background: #76bcf2;
+    }
+    .Shiftright{position:relative;-webkit-animation:animateright 0.6s;animation:animateright 0.6s}
+    @-webkit-keyframes animateright{from{right:-150px;opacity:0} to{right:0;opacity:1}}
+    @keyframes animateright{from{right:-150px;opacity:0} to{right:0;opacity:1}}
+    .Shiftleft{position:relative;-webkit-animation:animateleft 0.6s;animation:animateleft 0.6s}
+    @-webkit-keyframes animateleft{from{left:-150px;opacity:0} to{left:0;opacity:1}}
+    @keyframes animateleft{from{left:-150px;opacity:0} to{left:0;opacity:1}}
+
+</style>
+<div class="mainDiv" align="center">
+    <div class="signUpDiv" align="center">
+        <span style="color:grey;font-size: 18px">
+            On Boarding
+        </span><br>
+        <span style="color:#50D2C2;font-size: 40px;margin-top:10px ">
+           Now that we hav your basic information,<br> lets bring your onboard.
+        </span>
+        <div style=";width: 1000px;height: 500px;margin-top: 45px">
+             <span ng-init="table1=false" ng-click="table1=!table1" style="color:grey;font-size: 18px">
+                   Choose the icons that best describe you
+             </span>
+            <div style="width: 1000px;height: 90%;margin-top: 30px; border: dashed 1px red">
+                <div style="display: inline-block;vertical-align: top;height: 200px;border: dashed 1px red;padding-top: 195px">
+                    <span style="font-size: 35px;cursor:pointer;margin-top: 195px" ng-click="prevIcons()"><b><</b> </span>
+                </div>
+                <div style="display: inline-block;width: 60%">
+                <table class="iconBox" ng-show="iconsTable==1" ng-class="{Shiftright:action==1,Shiftleft:action==0}" style="width: 60%; border-spacing: 10px;">
+                    <tr class="" style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px;border: dashed 1px red">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td align="center" style="height: 70px;width: 70px;border: solid 4px #50D2C2 !important; border-radius: 50% !important;">
+                            <img  src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/programmer.png" height="70px">
+                        </td>
+                    </tr>
+                </table>
+                <table ng-show="iconsTable==2" ng-class="{Shiftright:action==1,Shiftleft:action==0}"  style="width: 60%; border-spacing: 10px;">
+                    <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td align="center" style="height: 70px;width: 70px;border: solid 4px #50D2C2 !important; border-radius: 50% !important;" >
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/youngAge.png" height="70px">
+                        </td>
+                    </tr>
+                </table>
+                <table ng-show="iconsTable==3" ng-class="{Shiftright:action==1,Shiftleft:action==0}"  style="width: 60%; border-spacing: 10px;">
+                    <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>
+                    </tr> <tr style="border: solid 1px black">
+                        <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>  <td style="height: 70px;width: 70px">
+                            <img src="images/middleAge.png" height="70px">
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <div style="display: inline-block;box-shadow: -70px 0px 5px 0px white;vertical-align: top;height: 200px;border: dashed 1px red;padding-top: 195px">
+                    <span style="font-size: 35px;cursor:pointer;" ng-click="nextIcons()"> <b>></b> </span>
+                </div>
+            </div>
+        </div>
+        <table style="width: 100%;">
+            <tr>
+                <td width="34%">
+                    <button ng-click="prev()" class="buttonBack" style="float: right"> <i class="fa fa-arrow-circle-o-left" style="float: left;font-size: 25px" aria-hidden="true"></i> Back
+                    </button>
+                </td>
+                <td width="33%">
+                    <button ng-click="next()" class="buttonCheckOut">Next  <i class="fa fa-arrow-circle-o-right" style="float: right;font-size: 25px" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td width="33%">
+
+                </td>
+            </tr>
+        </table>
+        </button>
+    </div>
+</div>

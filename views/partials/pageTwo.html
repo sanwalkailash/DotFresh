@@ -1,0 +1,132 @@
+<style>
+    body
+    {
+        margin:0;
+        padding:0;
+    }
+    .mainDiv{
+        width:100%;
+        height:100%;
+        background-color: white;
+    }
+    .signUpDiv{
+        padding-top: 28px;
+        width:1000px;
+        height:100%
+    }
+    .buttonCheckOut {
+        background-color: #50D2C2; /* Green */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        width: 300px;
+        display: inline-block;
+        font-size: 16px;
+
+        padding: 8px 14px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    [type="radio"] {
+        border: 0;
+        height: .5px; margin: -1px;
+        padding: 0;
+        visibility: hidden;
+        cursor: pointer;
+        position: absolute;
+        width: .5px;
+    }
+    /* the basic, unchecked style */
+    [type="radio"] + span:before {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+        vertical-align: -0.15em;
+        border-radius: 1em;           /*hard border*/
+        border: 0.200em solid white;
+        box-shadow: 0 0 0 0.10em grey !important;   /*light shadow*/
+        /*margin-right: 0.75em;*/
+        transition: 0.5s ease all;    /*animation here*/
+    }
+
+    /* the checked style using the :checked pseudo class */
+    [type="radio"]:checked + span:before {
+        background:#50D2C2 !important;
+        cursor: pointer;
+        box-shadow: 0 0 0 0.10em grey !important;
+    }
+</style>
+<div class="mainDiv" align="center">
+    <div class="signUpDiv" align="center">
+        <span style="color:grey;font-size: 18px">
+            Basic Information > <b>Social Information</b>
+        </span><br>
+        <span style="color:#50D2C2;font-size: 40px;margin-top:10px ">
+            Welcome! Let us connect your basic information<br> to find your earning potential
+        </span>
+        <div style="width: 1000px;height: 500px;margin-top: 45px">
+             <span style="color:grey;font-size: 18px">
+                    Who do you relate to most? Select one
+             </span>
+            <div style="width: 1000px;height: 90%;margin-top: 30px">
+                <div style="display: inline-block;width: 300px;height: 70%;vertical-align:top;">
+                    <img src="images/oldAge.png" height="250px">
+                    <br>
+                    <label for="radio-old">
+                        <input type="radio" value="oldAge" name="format" id="radio-old">
+                        <span   style="color:#50D2C2;font-size:18px;">
+                            <br style="line-height: 1.5">
+                            <b>The Baby Boomers</b>
+                            <br style="line-height: 1">
+                            <span style="color: grey;font-size:16px"><b>1945-1964</b></span>
+                        </span>
+                    </label>
+                </div>
+                <div style="display: inline-block;width: 300px;height: 70%;vertical-align: bottom;margin-top: 80px">
+                    <img src="images/middleAge.png" height="250px">
+                    <br>
+                    <label for="radio-middle">
+                        <input type="radio" value="middleAge" name="format" id="radio-middle">
+                        <span   style="color:#50D2C2;font-size:18px;">
+                            <br style="line-height: 1.5">
+                            <b>The Baby Boomers</b>
+                            <br style="line-height: 1">
+                            <span style="color: grey;font-size:16px"><b>1945-1964</b></span>
+                        </span>
+                    </label>
+                </div>
+                <div style="display: inline-block;width: 300px;height: 70%;vertical-align:top;">
+                    <img src="images/youngAge.png" height="250px">
+                    <br>
+                    <label for="radio-young">
+                        <input type="radio" value="youngAge"  name="format" id="radio-young">
+                        <span   style="color:#50D2C2;font-size:18px;">
+                            <br style="line-height: 1.5">
+                            <b>The Baby Boomers</b>
+                            <br style="line-height: 1">
+                            <span style="color: grey;font-size:16px"><b>1945-1964</b></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <table style="width: 100%;">
+            <tr>
+                <td width="34%">
+
+                </td>
+                <td width="33%" style="vertical-align: top">
+                    <button ng-click="next()" class="buttonCheckOut">Next  <i class="fa fa-arrow-circle-o-right" style="float: right;margin-top:0px;font-size: 25px" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td width="33%">
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
